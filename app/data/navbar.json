@@ -1,0 +1,25 @@
+{
+  "logo": "/DIU.png",
+  "links": [
+    {
+      "label": "Home",
+      "href": "/",
+      "external": false
+    },
+    {
+      "label": "Forum",
+      "href": "https://forum.daffodilvarsity.edu.bd/",
+      "external": true
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact",
+      "external": false
+    }
+  ],
+  "applyNow": {
+    "label": "Apply Now",
+    "href": "https://daffodilvarsity.edu.bd/admission",
+    "external": true
+  }
+}

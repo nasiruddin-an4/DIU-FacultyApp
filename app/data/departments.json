@@ -1,0 +1,205 @@
+[
+  {
+    "id": "bba",
+    "name": "Department of Business Administration",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "mgt",
+    "name": "Management",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "bre",
+    "name": "Real Estate",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "thm",
+    "name": "Tourism & Hospitality Management",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "de",
+    "name": "Innovation & Entrepreneurship",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "accounting",
+    "name": "Accounting",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "finance",
+    "name": "Finance & Banking",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "mkt",
+    "name": "Marketing",
+    "faculty": "fbe",
+    "facultyFullName": "Faculty of Business & Entrepreneurship",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "cse",
+    "name": "Computer Science and Engineering",
+    "faculty": "fsit",
+    "facultyFullName": "Faculty of Science & Information Technology",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "swe",
+    "name": "Software Engineering",
+    "faculty": "fsit",
+    "facultyFullName": "Faculty of Science & Information Technology",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "mct",
+    "name": "Multimedia & Creative Technology (MCT)",
+    "faculty": "fsit",
+    "facultyFullName": "Faculty of Science & Information Technology",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "cis",
+    "name": "Computing and Information System",
+    "faculty": "fsit",
+    "facultyFullName": "Faculty of Science & Information Technology",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "itm",
+    "name": "Information Technology & Management (ITM)",
+    "faculty": "fsit",
+    "facultyFullName": "Faculty of Science & Information Technology",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "ice",
+    "name": "Information and Communication Engineering",
+    "faculty": "fe",
+    "facultyFullName": "Faculty of Engineering",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "te",
+    "name": "Textile Engineering",
+    "faculty": "fe",
+    "facultyFullName": "Faculty of Engineering",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "eee",
+    "name": "Electrical and Electronic Engineering",
+    "faculty": "fe",
+    "facultyFullName": "Faculty of Engineering",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "architecture",
+    "name": "Architecture",
+    "faculty": "fe",
+    "facultyFullName": "Faculty of Engineering",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "ce",
+    "name": "Civil Engineering",
+    "faculty": "fe",
+    "facultyFullName": "Faculty of Engineering",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "esdm",
+    "name": "Environmental Science and Disaster Management",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "pharmacy",
+    "name": "Pharmacy",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "nfe",
+    "name": "Nutrition and Food Engineering",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "ph",
+    "name": "Public Health",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "pess",
+    "name": "Physical Education & Sports Science",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "ags",
+    "name": "Agricultural Science",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "geb",
+    "name": "Genetic Engineering and Biotechnology",
+    "faculty": "fhls",
+    "facultyFullName": "Faculty of Health and Life Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "english",
+    "name": "English",
+    "faculty": "fhss",
+    "facultyFullName": "Faculty of Humanities & Social Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "law",
+    "name": "Law",
+    "faculty": "fhss",
+    "facultyFullName": "Faculty of Humanities & Social Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "jmc",
+    "name": "Journalism, Media and Communication",
+    "faculty": "fhss",
+    "facultyFullName": "Faculty of Humanities & Social Sciences",
+    "imageUrl": "/department.jpeg"
+  },
+  {
+    "id": "ds",
+    "name": "Development Studies",
+    "faculty": "fhss",
+    "facultyFullName": "Faculty of Humanities & Social Sciences",
+    "imageUrl": "/department.jpeg"
+  }
+]
