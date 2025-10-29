@@ -1,0 +1,12 @@
+{
+  "administration": ["Dean", "Associate Dean", "Head", "Associate Head"],
+  "academic": [
+    "Professor",
+    "Associate Professor",
+    "Assistant Professor",
+    "Senior Lecturer",
+    "Lecturer",
+    "Visiting Faculty",
+    "Adjunct Faculty"
+  ]
+}

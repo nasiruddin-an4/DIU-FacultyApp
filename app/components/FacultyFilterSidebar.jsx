@@ -33,7 +33,7 @@ const FacultyFilterSidebar = ({ selectedFaculty, onFacultyChange }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+      className="fixed inset-0 bg-gray-200/10 bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
       onClick={() => setIsExpanded(false)}
     />
   );

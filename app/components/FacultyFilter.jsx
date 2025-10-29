@@ -27,9 +27,9 @@ export default function FacultyFilter() {
 
   return (
     <div className="container mx-auto py-20 px-4 md:px-0">
-      <div className="flex flex-col lg:flex-row md:gap-10">
+      <div className="flex flex-col lg:flex-row gap-5 md:gap-10 ">
         {/* Sidebar */}
-        <div className="w-full md:w-1/2 lg:w-1/3 md:px-0">
+        <div className="w-full md:w-1/2 lg:w-1/3 ">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function FacultyFilter() {
         </div>
 
         {/* Main Content */}
-        <div className="w-full md:w-3/4 lg:w-4/5">
+        <div className="w-full md:w-3/4 lg:w-4/5 ">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
