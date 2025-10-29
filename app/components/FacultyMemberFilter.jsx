@@ -32,6 +32,21 @@ const FacultyMemberFilter = ({
     <div className="mb-6">
       <h4 className="font-semibold text-gray-700 mb-2">{title}</h4>
       <div className="space-y-2">
+        {title === "Departmental Management" && (
+          <button
+            onClick={() => onRoleChange("")}
+            className={`w-full text-left px-3 py-2 rounded transition-colors flex items-center justify-between ${
+              selectedRole === ""
+                ? "bg-blue-50 text-blue-700"
+                : "hover:bg-gray-50"
+            }`}
+          >
+            <span>All Management & Faculty Members</span>
+            {selectedRole === "" && (
+              <span className="text-sm text-blue-600">Selected</span>
+            )}
+          </button>
+        )}
         {rolesList.map((role) => {
           const value = role;
           const active = selectedRole === value;
@@ -44,7 +59,9 @@ const FacultyMemberFilter = ({
               }`}
             >
               <span>{role}</span>
-              {active && <span className="text-sm text-blue-600">Selected</span>}
+              {active && (
+                <span className="text-sm text-blue-600">Selected</span>
+              )}
             </button>
           );
         })}
@@ -99,8 +116,12 @@ const FacultyMemberFilter = ({
               <div className="flex items-center gap-3">
                 <ListFilter className="w-6 h-6 text-gray-600" />
                 <div>
-                  <span className="font-semibold text-gray-900">Filter Members</span>
-                  <p className="text-sm text-gray-500">{search ? `Searching: "${search}"` : ""}</p>
+                  <span className="font-semibold text-gray-900">
+                    Filter by Role
+                  </span>
+                  <p className="text-sm text-gray-500">
+                    {search ? `Searching: "${search}"` : ""}
+                  </p>
                 </div>
               </div>
               <FaChevronDown className="text-gray-400" />
@@ -124,17 +145,17 @@ const FacultyMemberFilter = ({
         </>
       ) : (
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-          <h3 className="text-xl font-bold text-gray-800 mb-6">Filter Members</h3>
-          <div className="mb-4">
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by name or email"
-              className="w-full border rounded px-3 py-2"
-            />
-          </div>
-          <FilterOptions title="Management" rolesList={managementRoles} />
-          <FilterOptions title="Academic" rolesList={facultyRoles} />
+          <h3 className="text-xl font-bold text-gray-800 mb-6">
+            Filter by Role
+          </h3>
+          <FilterOptions
+            title="Departmental Management"
+            rolesList={managementRoles}
+          />
+          <FilterOptions
+            title="Departmental Faculty Members"
+            rolesList={facultyRoles}
+          />
         </div>
       )}
     </>
