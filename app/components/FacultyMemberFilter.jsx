@@ -29,24 +29,25 @@ const FacultyMemberFilter = ({
   }, [search, onSearch]);
 
   const FilterOptions = ({ title, rolesList }) => (
-    <div className="mb-6">
-      <h4 className="font-semibold text-gray-700 mb-2">{title}</h4>
+    <div className="mb-2">
       <div className="space-y-2">
         {title === "Departmental Management" && (
           <button
             onClick={() => onRoleChange("")}
-            className={`w-full text-left px-3 py-2 rounded transition-colors flex items-center justify-between ${
+            className={`w-full text-left cursor-pointer py-3 px-4 transition-all duration-200 border-l-[5px] hover:bg-blue-50 ${
               selectedRole === ""
-                ? "bg-blue-50 text-blue-700"
-                : "hover:bg-gray-50"
+                ? "border-l-blue-700 bg-blue-50 text-diuBlue"
+                : "border-l-transparent border-b border-gray-200"
             }`}
           >
-            <span>All Management & Faculty Members</span>
-            {selectedRole === "" && (
-              <span className="text-sm text-blue-600">Selected</span>
-            )}
+            <span className="text-diuBase ">
+              All Management & Faculty Members
+            </span>
           </button>
         )}
+        <h4 className="text-md font-semibold text-neutral-400 mb-2 pl-5">
+          {title}
+        </h4>
         {rolesList.map((role) => {
           const value = role;
           const active = selectedRole === value;
@@ -54,14 +55,13 @@ const FacultyMemberFilter = ({
             <button
               key={role}
               onClick={() => onRoleChange(value)}
-              className={`w-full text-left px-3 py-2 rounded transition-colors flex items-center justify-between ${
-                active ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
+              className={`w-full text-left cursor-pointer py-3 px-4 transition-all duration-200 border-l-[5px] hover:bg-blue-50 ${
+                active
+                  ? "border-l-blue-700 bg-blue-50 text-diuBlue"
+                  : "border-l-transparent"
               }`}
             >
-              <span>{role}</span>
-              {active && (
-                <span className="text-sm text-blue-600">Selected</span>
-              )}
+              <span className="text-diuBase">{role}</span>
             </button>
           );
         })}
@@ -70,38 +70,46 @@ const FacultyMemberFilter = ({
   );
 
   const MobileSidebar = () => (
-    <motion.div
-      initial={{ y: "100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "100%" }}
-      transition={{ type: "spring", damping: 25, stiffness: 120 }}
-      className="fixed bottom-0 left-0 right-0 h-[80vh] bg-white shadow-2xl z-50 md:hidden rounded-t-[32px] overflow-hidden px-4"
-    >
-      <div className="h-full flex flex-col">
-        <div className="pt-4 pb-2 flex justify-center">
-          <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
-        </div>
+    <div className="fixed inset-x-0 bottom-0 z-[999] md:hidden">
+      <motion.div
+        initial={{ y: "100%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100%" }}
+        transition={{ type: "spring", damping: 25, stiffness: 120 }}
+        className="h-[80vh] bg-white shadow-2xl rounded-t-[32px] overflow-hidden px-4"
+      >
+        <div className="h-full flex flex-col">
+          <div className="pt-4 pb-2 flex justify-center">
+            <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+          </div>
 
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <ListFilter className="w-6 h-6" /> Filter Faculty Members
-          </h3>
-          <div className="mt-3">
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by name or email"
-              className="w-full border rounded px-3 py-2"
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <ListFilter className="w-6 h-6" /> Filter Faculty Members
+            </h3>
+            <div className="mt-3">
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search by name or email"
+                className="w-full border rounded px-3 py-2"
+              />
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-6 z-[999]">
+            <FilterOptions
+              title="Departmental Management"
+              rolesList={managementRoles}
+            />
+            <FilterOptions
+              title="Departmental Faculty Members"
+              rolesList={facultyRoles}
             />
           </div>
         </div>
-
-        <div className="flex-1 overflow-y-auto p-6">
-          <FilterOptions title="Management" rolesList={managementRoles} />
-          <FilterOptions title="Academic" rolesList={facultyRoles} />
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 
   return (
@@ -110,18 +118,16 @@ const FacultyMemberFilter = ({
         <>
           <motion.button
             onClick={() => setIsExpanded(true)}
-            className="bg-white rounded-xl p-4 shadow-sm w-full border border-gray-200"
+            className="bg-white rounded-xl p-4 w-full z-50 relative"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <ListFilter className="w-6 h-6 text-gray-600" />
                 <div>
-                  <span className="font-semibold text-gray-900">
-                    Filter by Role
+                  <span className="font-semibold text-gray-500 text-xl">
+                    Filter by Role (
+                    {facultyRoles.length + managementRoles.length})
                   </span>
-                  <p className="text-sm text-gray-500">
-                    {search ? `Searching: "${search}"` : ""}
-                  </p>
                 </div>
               </div>
               <FaChevronDown className="text-gray-400" />
@@ -130,32 +136,77 @@ const FacultyMemberFilter = ({
 
           <AnimatePresence>
             {isExpanded && (
-              <>
+              <div className="fixed inset-0 z-[999] md:hidden">
+                {/* Dimmed Background */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                  className="absolute inset-0 bg-black/40 backdrop-blur-sm z-[998]"
                   onClick={() => setIsExpanded(false)}
                 />
-                <MobileSidebar />
-              </>
+
+                {/* Sidebar */}
+                <motion.div
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "100%" }}
+                  transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                  className="absolute bottom-0 left-0 right-0 h-[80vh] bg-white shadow-2xl rounded-t-[32px] overflow-hidden z-[999]"
+                >
+                  <div className="h-full flex flex-col">
+                    <div className="pt-4 pb-2 flex justify-center">
+                      <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+                    </div>
+
+                    <div className="px-6 py-4 border-b border-gray-200">
+                      <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                        <ListFilter className="w-6 h-6" /> Filter Faculty
+                        Members
+                      </h3>
+                      <div className="mt-3">
+                        <input
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          placeholder="Search by name or email"
+                          className="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto p-6">
+                      <FilterOptions
+                        title="Departmental Management"
+                        rolesList={managementRoles}
+                      />
+                      <FilterOptions
+                        title="Departmental Faculty Members"
+                        rolesList={facultyRoles}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </>
       ) : (
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-          <h3 className="text-xl font-bold text-gray-800 mb-6">
-            Filter by Role
+        <div className="bg-white">
+          <h3 className="text-xl font-bold text-gray-500 mb-5">
+            Filter by Role ({facultyRoles.length + managementRoles.length})
           </h3>
-          <FilterOptions
-            title="Departmental Management"
-            rolesList={managementRoles}
-          />
-          <FilterOptions
-            title="Departmental Faculty Members"
-            rolesList={facultyRoles}
-          />
+          <div className="space-y-2 border-l border-gray-200">
+            <FilterOptions
+              title="Departmental Management"
+              rolesList={managementRoles}
+            />
+            <div className="border-t border-gray-200 pt-2">
+              <FilterOptions
+                title="Departmental Faculty Members"
+                rolesList={facultyRoles}
+              />
+            </div>
+          </div>
         </div>
       )}
     </>

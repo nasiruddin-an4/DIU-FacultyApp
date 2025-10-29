@@ -8,7 +8,7 @@ const FacultyMemberCard = ({ faculty, member }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="relative h-48">
+      {/* <div className="relative h-48">
         {person.imageUrl ? (
           <Image
             src={person.imageUrl}
@@ -20,7 +20,7 @@ const FacultyMemberCard = ({ faculty, member }) => {
         ) : (
           <div className="w-full h-full bg-neutral-200" />
         )}
-      </div>
+      </div> */}
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-900">{person.name}</h3>
         <p className="text-gray-600">{person.role ?? person.designation}</p>

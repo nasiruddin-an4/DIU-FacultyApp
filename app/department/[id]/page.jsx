@@ -134,7 +134,7 @@ export default function DepartmentPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-diuBlue via-transparent to-transparent"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-16">
+        <div className="relative container mx-auto px-4 py-16">
           <div className="flex items-center gap-2 mb-4 text-sm md:text-base text-gray-200">
             <Link href="/" className="hover:text-white">
               Home
@@ -148,18 +148,17 @@ export default function DepartmentPage() {
           </h1>
 
           <p className="mt-2 text-gray-200 md:text-lg max-w-3xl">
-            Discover our distinguished faculty members of the{" "}
-            {department.name} and explore their expertise, research interests,
-            and achievements.
+            Discover our distinguished faculty members of the {department.name}{" "}
+            and explore their expertise, research interests, and achievements.
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="container mx-auto py-12 min-h-screen">
-        <div className="flex flex-col md:flex-row gap-6">
+      <div className="container mx-auto py-12 px-4 md:px-0">
+        <div className="flex flex-col md:flex-row gap-10">
           {/* Sidebar */}
-          <div className="w-full md:w-1/2 lg:w-1/3">
+          <div className="w-full md:w-1/2 lg:w-1/3 sticky top-20 self-start">
             <RoleFilterSidebar
               managementRoles={managementRoles}
               facultyRoles={academicRoles}

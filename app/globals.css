@@ -3,16 +3,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --zIndex-999: 999;
 }
 
 @theme inline {
   /* Fonts */
-  --font-primary: var(--font-manrope); 
-  
+  --font-primary: var(--font-manrope);
+
   /* DIU Brand Colors */
   --color-diuBlue: #002652;
   --color-diugreen: #3fa753;
   --color-diutext: #2f2f2f;
+  --zIndex-999: 999;
 
   /* Example: custom sizing variables */
   --diu-font-size-base: 22px;
@@ -20,8 +22,17 @@
 }
 
 /* Sizes */
-.text-diuBase { font-size: 22px; }
-.text-diuHeading { font-size: 36px; }
+.text-diuBase {
+  font-size: 22px;
+}
+
+.zIndex-999 {
+  z-index: 999 !important;
+}
+
+.text-diuHeading {
+  font-size: 36px;
+}
 
 body {
   background: var(--background);
