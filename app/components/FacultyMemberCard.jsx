@@ -174,7 +174,7 @@ const FacultyMemberCard = ({ faculty, member }) => {
             {/* Close button */}
             <button
               onClick={() => setShowPopup(false)}
-              className="absolute top-2 right-2 text-neutral-400 hover:text-neutral-600 p-2 rounded-full hover:bg-neutral-100 transition-colors"
+              className="absolute top-2 right-2 text-neutral-400 hover:text-neutral-600 p-2 rounded-full hover:bg-neutral-100 transition-colors cursor-pointer"
               aria-label="Close popup"
             >
               <FaTimes />
