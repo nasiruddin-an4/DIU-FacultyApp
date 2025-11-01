@@ -1,12 +1,12 @@
 [
   {
     "id": "faculty-001",
-    "name": "Professor Dr. Mohammed Masum Iqbal",
-    "title": "Pro Vice Chancellor",
+    "name": "Professor Dr. Mohammad Rokibul Kabir",
+    "title": "",
     "role": "Dean",
     "employeeId": "DIU-BA-001",
     "department": "bba",
-    "imageUrl": "https://faculty.daffodilvarsity.edu.bd/images/teacher/60e7e73d94d7b36a417108bd8f7cab14.jpg",
+    "imageUrl": "https://faculty.daffodilvarsity.edu.bd/images/teacher/a29095928d3f37db26872a877c1916c8.jpg",
     "email": "chairman.ba@diu.edu.bd",
     "phone": "2-9138234",
     "cellPhone": "(880) 1713-493029",
@@ -16,7 +16,7 @@
       "website": "https://www.example.com/",
       "twitter": "https://twitter.com/"
     },
-    "bio": "Professor Dr. Mohammed Masum Iqbal is the Dean of the Faculty of Business and Entrepreneurship (FBE) at Daffodil International University (DIU). With more than two decades of academic and administrative leadership, he has served as Head of the Department, Associate Dean, and now Dean, contributing significantly to the advancement of business education in Bangladesh. \n\nHe holds a PhD in Banking and Insurance from the University of Dhaka, along with an MBA and BBS in Marketing from the University of Rajshahi. His academic expertise spans Marketing, Services Marketing, Customer Relationship Management, and Social Business. Dr. Iqbal has established a strong global footprint through his roles as Guest Professor at UCSI University, Malaysia and participation in the Erasmus+ Program at Anadolu University, Turkey. A prolific scholar, he has authored over 50 research publications indexed in Scopus and Web of Science, and recently published a textbook on Services Marketing with Bangladesh Open University. \n\nHe serves as the Director of DIU’s Yunus Social Business Centre and Belt and Road Research Centre, playing a vital role in international collaboration and curriculum development. He frequently speaks at global conferences and is a recognized figure in social business education. Known for his visionary leadership, academic integrity, and commitment to innovation, Dr. Iqbal remains a respected force in shaping the future of business education in Bangladesh and beyond.",
+    "bio": "Professor Dr. Mohammad Rokibul Kabir is the Dean of the Faculty of Business and Entrepreneurship (FBE) at Daffodil International University (DIU). With more than two decades of academic and administrative leadership, he has served as Head of the Department, Associate Dean, and now Dean, contributing significantly to the advancement of business education in Bangladesh. \n\nHe holds a PhD in Banking and Insurance from the University of Dhaka, along with an MBA and BBS in Marketing from the University of Rajshahi. His academic expertise spans Marketing, Services Marketing, Customer Relationship Management, and Social Business. Dr. Kabir has established a strong global footprint through his roles as Guest Professor at UCSI University, Malaysia and participation in the Erasmus+ Program at Anadolu University, Turkey. A prolific scholar, he has authored over 50 research publications indexed in Scopus and Web of Science, and recently published a textbook on Services Marketing with Bangladesh Open University. \n\nHe serves as the Director of DIU’s Yunus Social Business Centre and Belt and Road Research Centre, playing a vital role in international collaboration and curriculum development. He frequently speaks at global conferences and is a recognized figure in social business education. Known for his visionary leadership, academic integrity, and commitment to innovation, Dr. Kabir remains a respected force in shaping the future of business education in Bangladesh and beyond.",
     "education": [
       {
         "degree": "PhD in Business Administration",

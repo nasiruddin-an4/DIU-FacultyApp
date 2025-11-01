@@ -29,24 +29,25 @@ const FacultyMemberFilter = ({
   }, [search, onSearch]);
 
   const FilterOptions = ({ title, rolesList }) => (
-    <div className="mb-6">
-      <h4 className="font-semibold text-gray-700 mb-2">{title}</h4>
+    <div className="mb-2">
       <div className="space-y-2">
         {title === "Departmental Management" && (
           <button
             onClick={() => onRoleChange("")}
-            className={`w-full text-left px-3 py-2 rounded transition-colors flex items-center justify-between ${
+            className={`w-full text-left cursor-pointer py-3 px-4 transition-all duration-200 border-l-[5px] hover:bg-blue-50 hover:text-blueText ${
               selectedRole === ""
-                ? "bg-blue-50 text-blue-700"
-                : "hover:bg-gray-50"
+                ? "border-l-blue-700 bg-blue-50 text-blueText"
+                : "border-l-transparent"
             }`}
           >
-            <span>All Management & Faculty Members</span>
-            {selectedRole === "" && (
-              <span className="text-sm text-blue-600">Selected</span>
-            )}
+            <span className="text-diuText text-diuBase font-medium truncate">
+              All Management & Faculty Members
+            </span>
           </button>
         )}
+        <h4 className="font-semibold text-gray-500 mb-2 pl-5 border-b border-gray-200 pb-1">
+          {title}
+        </h4>
         {rolesList.map((role) => {
           const value = role;
           const active = selectedRole === value;
@@ -54,14 +55,15 @@ const FacultyMemberFilter = ({
             <button
               key={role}
               onClick={() => onRoleChange(value)}
-              className={`w-full text-left px-3 py-2 rounded transition-colors flex items-center justify-between ${
-                active ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
+              className={`w-full text-left cursor-pointer py-3 px-4 transition-all duration-200 border-l-[5px] hover:bg-blue-50 hover:text-blueText ${
+                active
+                  ? "border-l-blue-700 bg-blue-50 text-blueText"
+                  : "border-l-transparent"
               }`}
             >
-              <span>{role}</span>
-              {active && (
-                <span className="text-sm text-blue-600">Selected</span>
-              )}
+              <span className="text-diuText text-diuBase font-medium truncate">
+                {role}
+              </span>
             </button>
           );
         })}
@@ -116,7 +118,7 @@ const FacultyMemberFilter = ({
               <div className="flex items-center gap-3">
                 <ListFilter className="w-6 h-6 text-gray-600" />
                 <div>
-                  <span className="font-semibold text-gray-900">
+                  <span className="font-semibold text-gray-900 border-b border-gray-200">
                     Filter by Role
                   </span>
                   <p className="text-sm text-gray-500">
@@ -144,18 +146,20 @@ const FacultyMemberFilter = ({
           </AnimatePresence>
         </>
       ) : (
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-          <h3 className="text-xl font-bold text-gray-800 mb-6">
-            Filter by Role
+        <div className="bg-white sticky top-24">
+          <h3 className="text-xl font-bold text-gray-600 mb-4 border-b border-gray-200 pb-2">
+            Filter by Role ({facultyRoles.length + managementRoles.length})
           </h3>
-          <FilterOptions
-            title="Departmental Management"
-            rolesList={managementRoles}
-          />
-          <FilterOptions
-            title="Departmental Faculty Members"
-            rolesList={facultyRoles}
-          />
+          <div className="space-y-2 border-l border-gray-200">
+            <FilterOptions
+              title="Departmental Management"
+              rolesList={managementRoles}
+            />
+            <FilterOptions
+              title="Departmental Faculty Members"
+              rolesList={facultyRoles}
+            />
+          </div>
         </div>
       )}
     </>
