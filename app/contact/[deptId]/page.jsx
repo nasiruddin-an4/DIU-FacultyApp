@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Phone, Mail, UserRound } from "lucide-react";
 import departments from "@/app/data/departments.json";
+import Image from "next/image";
+const HERO_IMAGE = "/banner.png";
 
 export default function DepartmentContactPage() {
   const { deptId } = useParams();
@@ -34,11 +36,15 @@ export default function DepartmentContactPage() {
     if (deptId) fetchContacts();
   }, [deptId]);
 
+  // ContactCard component
   const ContactCard = ({ title, people }) => (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all p-6">
-      <h2 className="text-xl font-semibold text-neutral-800 mb-5 flex items-center gap-2">
-        <UserRound className="text-diuBlue" />
-        <span className="text-diuBlue">{title}</span>
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100 p-6 flex flex-col">
+      <h2 className="text-xl font-bold text-blue-600 mb-5 flex items-center gap-2">
+        <UserRound
+          className="text-white bg-blue-100 p-1 rounded-full"
+          size={20}
+        />
+        {title}
       </h2>
       <div className="space-y-5">
         {Object.values(people).map((person, index) => (
@@ -46,28 +52,32 @@ export default function DepartmentContactPage() {
             key={`${title.replace(/\s+/g, "-").toLowerCase()}-${
               person?.id || person?.email || person?.name || index
             }`}
-            className="bg-gray-50 hover:bg-gray-100 rounded-lg p-4 transition"
+            className="bg-gray-50 hover:bg-gray-100 rounded-xl p-4 transition flex flex-col gap-2"
           >
             <h3 className="text-lg font-semibold text-gray-800">
               {person?.name}
             </h3>
-            <p className="text-sm text-gray-600 mb-3">{person?.designation}</p>
-            <div className="space-y-2 text-sm">
+            <p className="text-sm text-gray-600">{person?.designation}</p>
+            <div className="flex flex-col gap-2 mt-2">
               {person?.email && (
-                <div className="flex items-center gap-2">
-                  <Mail className="text-diuBlue" />
-                  <a
-                    href={`mailto:${person.email}`}
-                    className="text-gray-800 hover:text-diuBlue transition"
-                  >
-                    {person.email}
-                  </a>
-                </div>
+                <a
+                  href={`mailto:${person.email}`}
+                  className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
+                >
+                  <Mail
+                    className="bg-blue-100 p-1 rounded-full text-blue-600"
+                    size={18}
+                  />
+                  {person.email}
+                </a>
               )}
               {person?.mobile && (
-                <div className="flex items-center gap-2">
-                  <Phone className="text-diuBlue" />
-                  <p className="text-gray-800">{person.mobile}</p>
+                <div className="flex items-center gap-2 text-gray-700">
+                  <Phone
+                    className="bg-green-100 p-1 rounded-full text-green-600"
+                    size={18}
+                  />
+                  {person.mobile}
                 </div>
               )}
             </div>
@@ -77,6 +87,7 @@ export default function DepartmentContactPage() {
     </div>
   );
 
+  // Loading state
   if (loading) {
     return (
       <div className="container mx-auto py-20 text-center text-gray-500">
@@ -85,6 +96,7 @@ export default function DepartmentContactPage() {
     );
   }
 
+  // Error state
   if (error) {
     return (
       <div className="container mx-auto py-20 text-center">
@@ -92,7 +104,7 @@ export default function DepartmentContactPage() {
         <p className="text-neutral-600">{error}</p>
         <Link
           href={`/department/${deptId}`}
-          className="inline-block mt-6 px-6 py-2 bg-diuBlue text-white rounded-lg"
+          className="inline-block mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >
           Return to Department
         </Link>
@@ -100,27 +112,43 @@ export default function DepartmentContactPage() {
     );
   }
 
+  // Main content
   return (
-    <div className="pt-24 min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4">
-        <Link
-          href={`/department/${deptId}`}
-          className="inline-flex items-center text-neutral-600 mb-6 hover:text-diuBlue transition-colors"
-        >
-          <ArrowLeft className="mr-2" />
-          Back to {department?.name || "Department"}
-        </Link>
+    <div className="bg-gray-50">
+      {/* Hero / Breadcrumb */}
+      <div className="relative bg-blue-900 text-white overflow-hidden py-16">
+        <div className="absolute inset-0">
+          <Image
+            src={HERO_IMAGE}
+            alt="Campus Banner"
+            fill
+            className="object-cover object-center opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-diuBlue via-transparent to-transparent"></div>
+        </div>
 
-        <h1 className="text-3xl font-bold text-blueText mb-4">
-          Contact Information
-        </h1>
-        <p className="text-neutral-600 mb-8">
-          {contactData?.department?.department_name || department?.name} —
-          Contact Directory
-        </p>
+        <div className="relative z-10 container mx-auto px-4 py-16">
+          <div className="flex items-center gap-2 mb-4 text-sm md:text-base text-gray-200">
+            <Link href={`/department/${deptId}`} className="hover:text-white">
+              {department?.name || "Department"}
+            </Link>
+            <span className="text-gray-300">/</span>
+            <p className="text-gray-300">{department.facultyFullName}</p>
+          </div>
 
-        {/* ✅ Responsive Grid for Contact Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white">
+            {department.name}
+          </h1>
+
+          <p className="mt-2 text-gray-200 md:text-lg max-w-3xl">
+            Contact Directory
+          </p>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-20 md:px-0">
+        {/* Responsive Grid with items-start for dynamic height */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {contactData?.deans &&
             Object.values(contactData.deans).length > 0 && (
               <ContactCard title="Dean’s Office" people={contactData.deans} />

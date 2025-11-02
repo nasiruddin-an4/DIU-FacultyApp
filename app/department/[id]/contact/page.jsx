@@ -112,7 +112,7 @@ export default function DepartmentContactPage() {
   );
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       <div className="container mx-auto px-4">
         <Link
           href={`/department/${id}`}

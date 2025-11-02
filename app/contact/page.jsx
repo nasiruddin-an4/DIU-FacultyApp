@@ -101,7 +101,7 @@ const DepartmentContactPage = () => {
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-50">
+    <div className=" bg-gray-50">
       <div className="container mx-auto px-4">
         <Link
           href={deptId ? `/department/${deptId}` : "/"}

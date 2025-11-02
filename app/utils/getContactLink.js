@@ -1,7 +1,9 @@
 import facultyMembers from "../data/facultyMembers.json";
 
 export const getContactLink = (pathname) => {
-  if (!pathname) return "/contact";
+  const defaultContactUrl = "https://daffodilvarsity.edu.bd/article/contact";
+
+  if (!pathname) return defaultContactUrl;
 
   const pathSegments = pathname.split("/").filter(Boolean);
 
@@ -18,5 +20,5 @@ export const getContactLink = (pathname) => {
     }
   }
 
-  return "/contact";
+  return defaultContactUrl; // Return the default URL for any other case
 };

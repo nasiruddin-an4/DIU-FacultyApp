@@ -20,7 +20,7 @@ export default function Navbar() {
   const ContactLink = () =>
     isExternal ? (
       <a
-        href={contactUrl}
+        href="https://daffodilvarsity.edu.bd/article/contact"
         target="_blank"
         rel="noopener noreferrer"
         className="font-medium text-gray-800 hover:text-[#034EA2] transition"
