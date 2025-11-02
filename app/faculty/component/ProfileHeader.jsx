@@ -10,10 +10,22 @@ import {
   Twitter,
   Award,
   MapPin,
+  BookOpen,
+  GraduationCap,
+  FileText,
+  Briefcase,
+  ExternalLink,
+  ChevronRight,
+  Home,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function ProfileHeader({ facultyMember, departmentInfo }) {
+  const [isImageHovered, setIsImageHovered] = useState(false);
+
   const handleEmailClick = () => {
     window.open(`mailto:${facultyMember?.email}`, "_blank");
   };
@@ -22,145 +34,205 @@ export default function ProfileHeader({ facultyMember, departmentInfo }) {
     window.open(`tel:${facultyMember?.phone}`, "_blank");
   };
 
-  const handleShare = async () => {
-    if (navigator?.share) {
-      try {
-        await navigator.share({
-          title: `${facultyMember?.name} - Faculty Profile`,
-          text: `Check out ${facultyMember?.name}'s profile`,
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.error("Error sharing:", err);
-      }
-    } else {
-      await navigator.clipboard.writeText(window.location.href);
-      alert("Profile link copied to clipboard!");
-    }
-  };
+  // ===== Calculate Stats =====
+  const totalCourses = facultyMember?.courses?.current?.length || 0;
+  const totalResearch = facultyMember?.research?.publications?.length || 0;
+  const totalPublications = facultyMember?.publications?.length || 0;
+  const totalTrainings = facultyMember?.trainingExperience?.length || 0;
+  const totalAwards = facultyMember?.awardsAndScholarships?.length || 0;
+
+  const stats = [
+    { icon: Briefcase, label: "Courses", value: totalCourses, color: "indigo" },
+    { icon: BookOpen, label: "Research", value: totalResearch, color: "blue" },
+    {
+      icon: FileText,
+      label: "Publications",
+      value: totalPublications,
+      color: "green",
+    },
+    {
+      icon: GraduationCap,
+      label: "Trainings",
+      value: totalTrainings,
+      color: "purple",
+    },
+    { icon: Award, label: "Awards", value: totalAwards, color: "yellow" },
+  ];
 
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-xl">
-      <div className="max-w-4xl mx-auto">
-        <div className="overflow-hidden">
-          <div className="p-4 sm:p-6 lg:p-8">
-            {/* Image + Info */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
-              {/* Image */}
-              <div className="relative w-40 h-56 lg:w-64 lg:h-72 rounded-md overflow-hidden border-4 border-white">
-                <Image
-                  src={facultyMember?.imageUrl || "/placeholder-profile.png"}
-                  alt={facultyMember?.name}
-                  width={200}
-                  height={300}
-                  unoptimized
-                  className="w-full h-full object-cover"
-                />
-              </div>
+    <div className="bg-gray-50 shadow ">
+      <div className="container mx-auto px-4 py-5 md:px-0 ">
+        {/* === Breadcrumb Navigation === */}
+        <nav
+          className="flex items-center gap-1 text-sm text-gray-600 mb-2 mt-5"
+          aria-label="Breadcrumb"
+        >
+          <Link
+            href="/"
+            className="flex items-center gap-1 text-diuBlue hover:text-blue-700 transition-colors"
+          >
+            Home
+          </Link>
+          <ChevronRight className="w-4 h-4 text-gray-400" />
+          <Link
+            href={`/department/${facultyMember.department}`}
+            className="flex items-center gap-1 text-diuBlue hover:text-blue-700 transition-colors"
+          >
+            Department of {facultyMember.department?.toUpperCase()}
+          </Link>
+          <ChevronRight className="w-4 h-4 text-gray-400" />
+          <span className="font-semibold text-gray-400">
+            {facultyMember?.name}
+          </span>
+        </nav>
 
-              {/* Info */}
-              <div className="flex-1 text-center sm:text-left space-y-4">
-                {/* Name + Title */}
-                <div className="space-y-3">
-                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
-                    {facultyMember?.name}
-                  </h1>
+        {/* === Main Profile Header === */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 xl:gap-12 py-10 pb-20">
+          {/* === Left Side: Image Card === */}
+          <div
+            className="relative group w-48 h-64 sm:w-56 sm:h-72 lg:w-72 lg:h-92"
+            onMouseEnter={() => setIsImageHovered(true)}
+            onMouseLeave={() => setIsImageHovered(false)}
+          >
+            <Image
+              src={facultyMember?.imageUrl || "/placeholder-profile.png"}
+              alt={facultyMember?.name}
+              fill
+              className="object-cover transition-transform duration-700"
+              unoptimized
+            />
+          </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-gray-600">
+          {/* === Middle: Info Section === */}
+          <div className="flex-1 text-center lg:text-left space-y-6 max-w-2xl">
+            {/* Name & Title */}
+            <div className="space-y-2">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-diuBlue">
+                {facultyMember?.name}
+              </h1>
+              <p className="text-lg sm:text-xl flex items-center justify-center lg:justify-start gap-1 font-semibold text-gray-700">
+                <Award className="w-5 h-5 text-yellow-500" />
+                {facultyMember?.title}
+              </p>
+              <p className="text-base text-gray-500 flex items-center justify-center lg:justify-start gap-1 border-b pb-2 border-gray-200">
+                <MapPin className="w-4 h-4" />
+                {facultyMember?.role} —{" "}
+                <span className="font-medium text-gray-500">
+                  {departmentInfo?.name}
+                </span>
+              </p>
+            </div>
+
+            {/* Contact Buttons */}
+            <div className="pt-2 space-y-3">
+              {facultyMember?.email && (
+                <button
+                  onClick={handleEmailClick}
+                  className="flex items-center gap-2 text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+                >
+                  <Mail className="w-4.5 h-4.5 " />
+                  <span className="inline-block">
+                    Email: {facultyMember.email}
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </button>
+              )}
+              {facultyMember?.phone && (
+                <a
+                  href={`tel:${facultyMember.phone}`}
+                  onClick={handlePhoneClick}
+                  className="flex items-center gap-2 text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+                >
+                  <Phone className="w-4.5 h-4.5 " />
+                  <span className="inline-block">
+                    Office Phone: {facultyMember.phone}
+                  </span>
+                </a>
+              )}
+              {facultyMember?.cellPhone && (
+                <a
+                  href={`tel:${facultyMember.cellPhone}`}
+                  className="flex items-center gap-2 text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+                >
+                  <Smartphone className="w-4.5 h-4.5 " />
+                  <span className="inline-block">
+                    Cell Phone: {facultyMember.cellPhone}
+                  </span>
+                </a>
+              )}
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center lg:justify-start gap-3">
+              {facultyMember?.socialLinks ? (
+                Object.entries(facultyMember.socialLinks).map(
+                  ([platform, url]) => {
+                    if (!url) return null;
+                    const icons = {
+                      linkedin: Linkedin,
+                      youtube: Youtube,
+                      website: Globe,
+                      twitter: Twitter,
+                    };
+                    const Icon = icons[platform] || Globe;
+
+                    return (
+                      <a
+                        key={platform}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-xl text-diuBlue border transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg"
+                      >
+                        <Icon className="w-5 h-5" />
+                      </a>
+                    );
+                  }
+                )
+              ) : (
+                <p className="text-gray-400 text-sm italic">
+                  No social links available
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* === Right: Academic Stats === */}
+          <div className="w-full lg:w-80 xl:w-96">
+            <div className="bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-inner p-5">
+              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                Academic Impact
+              </h2>
+
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map(({ icon: Icon, label, value, color }, idx) => (
+                  <div
+                    key={idx}
+                    className="group relative bg-gradient-to-br from-white to-gray-50 p-4 rounded-xl border border-gray-100 hover:border-gray-300 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                  >
                     <div className="flex items-center gap-2">
-                      <Award className="w-5 h-5 text-yellow-500" />
-                      <p className="text-sm sm:text-base font-medium">
-                        {facultyMember?.title}
-                      </p>
+                      <div
+                        className={`p-2 rounded-lg group-hover:bg-${color}-200 transition-colors mb-2`}
+                      >
+                        <Icon className={`w-6 h-6 text-blue-900`} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-diuBlue">
+                          {value}
+                        </p>
+                        <p className="text-xs text-gray-600 font-medium mt-0.5">
+                          {label}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-indigo-500" />
-                      <p className="text-sm sm:text-base font-medium">
-                        {facultyMember?.role}
-                      </p>
+                    {/* Tooltip */}
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-10">
+                      {value} {label}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-indigo-500" />
-                    <p className="text-sm sm:text-base font-medium text-gray-600">
-                      {departmentInfo?.name}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Contact Info */}
-                <div className="space-y-3 border-t pt-3">
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-5 h-5 text-blue-600" />
-                    <a
-                      href={`mailto:${facultyMember?.email}`}
-                      onClick={handleEmailClick}
-                      className="text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200"
-                    >
-                      Email: {facultyMember?.email}
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                    <a
-                      href={`tel:${facultyMember?.phone}`}
-                      onClick={handlePhoneClick}
-                      className="text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200"
-                    >
-                      Office Phone: {facultyMember?.phone}
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Smartphone className="w-5 h-5 text-blue-600" />
-                    <a
-                      href={`tel:${facultyMember?.cellPhone}`}
-                      className="text-gray-800 font-medium hover:text-blue-700 transition-colors duration-200"
-                    >
-                      Mobile: {facultyMember?.cellPhone}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex flex-wrap gap-3 mt-4">
-                  {facultyMember?.socialLinks ? (
-                    Object.entries(facultyMember.socialLinks).map(
-                      ([platform, url]) => {
-                        if (!url) return null;
-
-                        const icons = {
-                          linkedin: Linkedin,
-                          youtube: Youtube,
-                          website: Globe,
-                          twitter: Twitter,
-                        };
-                        const Icon = icons[platform] || Globe;
-
-                        return (
-                          <a
-                            key={platform}
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex items-center justify-center w-9 h-9 border border-diuBlue rounded-lg hover:bg-diuBlue/5 transition-all duration-300 hover:scale-105"
-                          >
-                            <Icon className="w-5 h-5 text-diuBlue group-hover:text-diuBlue" />
-                          </a>
-                        );
-                      }
-                    )
-                  ) : (
-                    <div className="text-center py-2 text-gray-500 bg-gray-50 rounded-lg w-full">
-                      <p className="text-sm font-medium">
-                        No social links available
-                      </p>
-                    </div>
-                  )}
-                </div>
+                ))}
               </div>
             </div>
           </div>

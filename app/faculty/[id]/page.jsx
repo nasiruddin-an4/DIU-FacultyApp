@@ -19,20 +19,14 @@ function Page() {
   }
 
   return (
-    <div className="pt-24">
-      <div className="container mx-auto px-4 lg:px-8">
-        <Link
-          href={`/department/${faculty.department}`}
-          className="inline-flex items-center text-neutral-500 mb-6 hover:text-primary-600 transition-colors"
-        >
-          <FaArrowLeft className="mr-2" />
-          Back to {faculty.department?.toUpperCase()} Department
-        </Link>
-
+    <div>
+      <div className="">
         <ProfileHeader
           facultyMember={faculty}
           departmentInfo={departmentInfo}
         />
+      </div>
+      <div className="py-20">
         <ProfileTabs facultyMember={faculty} />
       </div>
     </div>
