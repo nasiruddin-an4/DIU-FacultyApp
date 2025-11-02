@@ -73,3 +73,6 @@ body {
 .animate-slide-left {
   animation: slideLeft 0.2s ease-out;
 }
+.zIndex-9999 {
+  z-index: 9999;
+}

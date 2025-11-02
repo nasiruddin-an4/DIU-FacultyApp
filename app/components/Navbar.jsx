@@ -12,7 +12,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm py-4 border-b border-gray-200">
+    <header className="sticky top-0 z-999 w-full bg-white shadow-sm py-4 border-b border-gray-200">
       <div className="container mx-auto flex justify-between items-center px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
@@ -78,7 +78,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-72 bg-white shadow-lg zIndex-9999 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
