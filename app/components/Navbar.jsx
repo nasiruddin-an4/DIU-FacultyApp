@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { getContactLink } from "../utils/getContactLink";
 import navbar from "../data/navbar.json";
 
 export default function Navbar() {
@@ -11,8 +13,31 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const pathname = usePathname();
+  const contactUrl = getContactLink(pathname);
+  const isExternal = contactUrl.startsWith("http");
+
+  const ContactLink = () =>
+    isExternal ? (
+      <a
+        href={contactUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-gray-800 hover:text-[#034EA2] transition"
+      >
+        Contact Us
+      </a>
+    ) : (
+      <Link
+        href={contactUrl}
+        className="font-medium text-gray-800 hover:text-[#034EA2] transition"
+      >
+        Contact Us
+      </Link>
+    );
+
   return (
-    <header className="sticky top-0 z-999 w-full bg-white shadow-sm py-6 border-b border-gray-200">
+    <header className="sticky top-0 z-999 w-full bg-white shadow-sm py-6">
       <div className="container mx-auto flex justify-between items-center px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
@@ -48,6 +73,13 @@ export default function Navbar() {
               </Link>
             )
           )}
+
+          <Link
+            href={contactUrl}
+            className="font-medium text-gray-800 hover:text-[#034EA2] transition"
+          >
+            Contact Us
+          </Link>
 
           <button
             type="button"
@@ -134,6 +166,11 @@ export default function Navbar() {
           >
             {navbar.applyNow.label}
           </a>
+
+          {/* Contact Link */}
+          <div className="mt-4">
+            <ContactLink />
+          </div>
         </nav>
       </div>
 

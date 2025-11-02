@@ -10,11 +10,6 @@
       "label": "Forum",
       "href": "https://forum.daffodilvarsity.edu.bd/",
       "external": true
-    },
-    {
-      "label": "Contact Us",
-      "href": "/contact",
-      "external": false
     }
   ],
   "applyNow": {
