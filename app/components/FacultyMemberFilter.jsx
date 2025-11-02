@@ -157,7 +157,7 @@ const FacultyMemberFilter = ({
         </>
       ) : (
         // Desktop View
-        <div className="bg-white sticky top-24 rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-white sticky top-24">
           <h3 className="text-xl font-bold text-gray-700 mb-4 border-b border-gray-200 pb-2">
             Filter by Role ({facultyRoles.length + managementRoles.length})
           </h3>

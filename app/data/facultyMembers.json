@@ -2,12 +2,12 @@
   {
     "id": "faculty-001",
     "name": "Professor Dr. Mohammad Rokibul Kabir",
-    "title": "",
+    "title": "Dean & Professor",
     "role": "Dean",
     "employeeId": "DIU-BA-001",
     "department": "bba",
     "imageUrl": "https://faculty.daffodilvarsity.edu.bd/images/teacher/a29095928d3f37db26872a877c1916c8.jpg",
-    "email": "chairman.ba@diu.edu.bd",
+    "email": "chairman.bba@diu.edu.bd",
     "phone": "2-9138234",
     "cellPhone": "(880) 1713-493029",
     "socialLinks": {

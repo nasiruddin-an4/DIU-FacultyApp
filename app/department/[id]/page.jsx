@@ -158,7 +158,7 @@ export default function DepartmentPage() {
       <div className="container mx-auto py-12 px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-10">
           {/* Sidebar */}
-          <div className="w-full md:w-1/2 lg:w-1/3">
+          <div className="w-full md:w-1/2 lg:w-1/3 sticky top-24 self-start">
             <RoleFilterSidebar
               managementRoles={managementRoles}
               facultyRoles={academicRoles}
